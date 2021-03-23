@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+</head>
+<body>
+    <h1><span id="lightingModePref"></span> Mode</h1>
+    <h1>Shaking <span id="motionPref"></span> Allowed</h1>
+    <h1><span id="vibrateAvail"></span> Vibrate</h1>
+</body>
+<script>
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const colorMode = window.matchMedia('(prefers-color-scheme: dark)');
+    const vibrate = navigator.vibrate;
+
+    // Check if the media query matches or is not available.
+    if (!mediaQuery || mediaQuery.matches) {
+        document.getElementById('motionPref').innerHTML = "isn't"
+    } else {
+        document.getElementById('motionPref').innerHTML = "is"
+    }
+
+    if (!colorMode || colorMode.matches) {
+        document.getElementById('lightingModePref').innerHTML = "Dark"
+    } else {
+        document.getElementById('lightingModePref').innerHTML = "Light"
+    }
+
+    if (!vibrate) {
+        document.getElementById('vibrateAvail').innerHTML = "Can't"
+    } else {
+        document.getElementById('vibrateAvail').innerHTML = "Can"
+    }
+    
+</script>
+</html>
